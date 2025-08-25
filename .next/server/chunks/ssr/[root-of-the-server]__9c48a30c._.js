@@ -217,7 +217,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$accounts$2f$Ad
 ;
 ;
 ;
-// 🎨 Random Tailwind color generator
+//  Random Tailwind color generator
 const getRandomColor = ()=>{
     const colors = [
         "bg-teal-600",
@@ -233,7 +233,7 @@ function AccountsPage() {
     const [accounts, setAccounts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
-    // 🔄 Fetch Accounts from DB
+    //  Fetch Accounts from DB
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const fetchAccounts = async ()=>{
             const userId = localStorage.getItem("userId");
@@ -243,7 +243,7 @@ function AccountsPage() {
                 return;
             }
             try {
-                const res = await fetch(`http://localhost:5000/api/accounts/user/${userId}`);
+                const res = await fetch(`https://backend-1-bqpk.onrender.com/api/accounts/user/${userId}`);
                 if (res.ok) {
                     const data = await res.json();
                     setAccounts(data);
@@ -256,11 +256,11 @@ function AccountsPage() {
     }, [
         router
     ]);
-    // ➕ Add Account
+    //  Add Account
     const handleAddAccount = async (newAcc)=>{
         try {
-            const userId = localStorage.getItem("userId"); // ✅
-            const res = await fetch("http://localhost:5000/api/accounts", {
+            const userId = localStorage.getItem("userId");
+            const res = await fetch("https://backend-1-bqpk.onrender.com/api/accounts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -282,10 +282,10 @@ function AccountsPage() {
             console.error("❌ Error adding account:", err);
         }
     };
-    // ❌ Remove Account
+    //  Remove Account
     const handleRemoveAccount = async (id)=>{
         try {
-            const res = await fetch(`http://localhost:5000/api/accounts/${id}`, {
+            const res = await fetch(`https://backend-1-bqpk.onrender.com/api/accounts/${id}`, {
                 method: "DELETE"
             });
             if (res.ok) {

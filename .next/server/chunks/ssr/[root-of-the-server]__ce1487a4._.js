@@ -119,7 +119,6 @@ function ProfilePage() {
         photo: null
     });
     const [userId, setUserId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    // ✅ Login ke baad userId localStorage me save karna hoga
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const storedUser = JSON.parse(localStorage.getItem("user"));
         console.log("storedUser:", storedUser);
@@ -128,12 +127,11 @@ function ProfilePage() {
             fetchUser(storedUser._id);
         }
     }, []);
-    // ✅ API se user ka data fetch
-    // ✅ API se user ka data fetch
+    // API se user ka data fetch
     const fetchUser = async ()=>{
         try {
             const token = localStorage.getItem("token");
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get("http://localhost:5000/api/user/me", {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get("https://backend-1-bqpk.onrender.com/api/user/me", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -145,7 +143,6 @@ function ProfilePage() {
                 phone: user.phone || "",
                 photo: user.profilePic || null
             });
-            // ✅ LocalStorage update bhi karo (Sidebar/Profile ke liye)
             if (user.name) localStorage.setItem("name", user.name);
             if (user.email) localStorage.setItem("email", user.email);
             if (user.profilePic) localStorage.setItem("avatar", user.profilePic);
@@ -154,7 +151,7 @@ function ProfilePage() {
             alert("Failed to fetch profile");
         }
     };
-    // ✅ Input change handler
+    // Input change handler
     const handleInputChange = (e)=>{
         const { name, value } = e.target;
         setProfile((prev)=>({
@@ -162,7 +159,7 @@ function ProfilePage() {
                 [name]: value
             }));
     };
-    // ✅ File change handler
+    // File change handler
     const handleFileChange = (e)=>{
         const file = e.target.files[0];
         if (file) {
@@ -172,12 +169,11 @@ function ProfilePage() {
                 }));
         }
     };
-    // ✅ Profile update handler
-    // ✅ Profile update handler
+    // Profile update handler
     const handleUpdate = async ()=>{
         try {
-            const token = localStorage.getItem("token"); // 👈 login/signup ke baad save hota hai
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].put("http://localhost:5000/api/user/update", {
+            const token = localStorage.getItem("token");
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].put("https://backend-1-bqpk.onrender.com/api/user/update", {
                 name: profile.fullName,
                 phone: profile.phone
             }, {
@@ -198,13 +194,13 @@ function ProfilePage() {
                 if (updatedUser.email) localStorage.setItem("email", updatedUser.email);
                 if (updatedUser.profilePic) localStorage.setItem("avatar", updatedUser.profilePic);
             }
-            alert("✅ Profile updated successfully");
+            alert(" Profile updated successfully");
         } catch (err) {
             console.error("Update error:", err.response?.data || err.message);
             alert("❌ Failed to update profile");
         }
     };
-    // ✅ Profile photo upload handler
+    // Profile photo upload handler
     const handleProfileUpload = async ()=>{
         if (!profile.photo || !(profile.photo instanceof File)) {
             alert("Please select a new profile picture first");
@@ -214,7 +210,7 @@ function ProfilePage() {
             const token = localStorage.getItem("token");
             const formData = new FormData();
             formData.append("profile", profile.photo);
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post("http://localhost:5000/api/user/upload-profile", formData, {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post("https://backend-1-bqpk.onrender.com/api/user/upload-profile", formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
@@ -253,7 +249,7 @@ function ProfilePage() {
                                 children: "Account"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/profile/page.js",
-                                lineNumber: 164,
+                                lineNumber: 156,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -262,13 +258,13 @@ function ProfilePage() {
                                 children: "Security"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/profile/page.js",
-                                lineNumber: 170,
+                                lineNumber: 162,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/profile/page.js",
-                        lineNumber: 163,
+                        lineNumber: 155,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -284,7 +280,7 @@ function ProfilePage() {
                                                 children: "Full name"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 183,
+                                                lineNumber: 175,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -295,13 +291,13 @@ function ProfilePage() {
                                                 className: "mt-1 w-full px-3 py-2 border rounded-md text-gray-700"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 184,
+                                                lineNumber: 176,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/profile/page.js",
-                                        lineNumber: 182,
+                                        lineNumber: 174,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -311,7 +307,7 @@ function ProfilePage() {
                                                 children: "Email"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 194,
+                                                lineNumber: 186,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -322,13 +318,13 @@ function ProfilePage() {
                                                 className: "mt-1 w-full px-3 py-2 border rounded-md text-gray-700"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 195,
+                                                lineNumber: 187,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/profile/page.js",
-                                        lineNumber: 193,
+                                        lineNumber: 185,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -338,7 +334,7 @@ function ProfilePage() {
                                                 children: "Phone Number"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 205,
+                                                lineNumber: 197,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -349,19 +345,19 @@ function ProfilePage() {
                                                 className: "mt-1 w-full px-3 py-2 border rounded-md text-gray-700"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 206,
+                                                lineNumber: 198,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/profile/page.js",
-                                        lineNumber: 204,
+                                        lineNumber: 196,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/profile/page.js",
-                                lineNumber: 181,
+                                lineNumber: 173,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -372,19 +368,19 @@ function ProfilePage() {
                                         children: "Your Profile Picture"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/profile/page.js",
-                                        lineNumber: 218,
+                                        lineNumber: 210,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "w-32 h-32 border-2 border-dashed border-gray-300 flex items-center justify-center rounded-md relative",
                                         children: [
                                             profile.photo && !(profile.photo instanceof File) ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                src: `http://localhost:5000/${profile.photo}`,
+                                                src: `https://backend-1-bqpk.onrender.com/${profile.photo}`,
                                                 alt: "Profile",
                                                 className: "w-full h-full object-cover rounded-md"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 223,
+                                                lineNumber: 215,
                                                 columnNumber: 17
                                             }, this) : profile.photo instanceof File ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                 src: URL.createObjectURL(profile.photo),
@@ -392,14 +388,14 @@ function ProfilePage() {
                                                 className: "w-full h-full object-cover rounded-md"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 229,
+                                                lineNumber: 221,
                                                 columnNumber: 17
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "text-sm text-gray-400",
                                                 children: "Upload your photo"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 235,
+                                                lineNumber: 227,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -409,13 +405,13 @@ function ProfilePage() {
                                                 className: "absolute inset-0 opacity-0 cursor-pointer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/profile/page.js",
-                                                lineNumber: 237,
+                                                lineNumber: 229,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/profile/page.js",
-                                        lineNumber: 221,
+                                        lineNumber: 213,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -427,24 +423,24 @@ function ProfilePage() {
                                             children: "Upload Profile Picture"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/profile/page.js",
-                                            lineNumber: 246,
+                                            lineNumber: 238,
                                             columnNumber: 3
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/profile/page.js",
-                                        lineNumber: 245,
+                                        lineNumber: 237,
                                         columnNumber: 1
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/profile/page.js",
-                                lineNumber: 217,
+                                lineNumber: 209,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/profile/page.js",
-                        lineNumber: 179,
+                        lineNumber: 171,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -456,18 +452,18 @@ function ProfilePage() {
                             children: "Update Profile"
                         }, void 0, false, {
                             fileName: "[project]/src/app/profile/page.js",
-                            lineNumber: 260,
+                            lineNumber: 252,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/profile/page.js",
-                        lineNumber: 259,
+                        lineNumber: 251,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/profile/page.js",
-                lineNumber: 161,
+                lineNumber: 153,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -478,18 +474,18 @@ function ProfilePage() {
                     children: "⬅ Back"
                 }, void 0, false, {
                     fileName: "[project]/src/app/profile/page.js",
-                    lineNumber: 270,
+                    lineNumber: 262,
                     columnNumber: 19
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/profile/page.js",
-                lineNumber: 269,
+                lineNumber: 261,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/profile/page.js",
-        lineNumber: 160,
+        lineNumber: 152,
         columnNumber: 5
     }, this);
 }
