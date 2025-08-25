@@ -82,7 +82,7 @@ export default function TotalBalance() {
     >
       {/* Total Balance Amount */}
       <p className="text-lg font-bold text-gray-900 mb-2">
-        ${accounts[index].balance}
+        {accounts[index].balance}
       </p>
       <CardContent className="p-0">
         {/* Active Account */}
