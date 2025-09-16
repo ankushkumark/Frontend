@@ -1,6 +1,10 @@
 "use client";
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
+<<<<<<< HEAD
+=======
+import useExpenses from "@/hooks/useExpenses";
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 import {
   BarChart,
   Bar,
@@ -47,35 +51,59 @@ export default function Statistics() {
   const chartData = view === "week" ? weeklyData : monthlyData;
 
   return (
+<<<<<<< HEAD
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+=======
+    <div className="flex min-h-screen bg-gray-50">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
       {/* ✅ Main Content */}
       <main className="flex-1 p-6">
         <div className="max-w-5xl mx-auto w-full px-4 space-y-6">
           {/* ===== Chart Card ===== */}
+<<<<<<< HEAD
           <Card className="p-4 rounded-lg shadow-sm bg-white dark:bg-gray-800 w-full">
+=======
+          <Card className="p-4 rounded-lg shadow-sm bg-white w-full">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             {/* Header */}
             <div className="flex justify-between items-center mb-4 relative">
               <div
                 className="flex items-center gap-1 cursor-pointer"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
+<<<<<<< HEAD
                 <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-300">
+=======
+                <h2 className="text-sm font-semibold text-gray-600">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                   {view === "month"
                     ? "Monthly Comparison"
                     : "Weekly Comparison"}
                 </h2>
                 {dropdownOpen ? (
+<<<<<<< HEAD
                   <ChevronUp size={16} className="text-gray-500 dark:text-gray-400" />
                 ) : (
                   <ChevronDown size={16} className="text-gray-500 dark:text-gray-400" />
+=======
+                  <ChevronUp size={16} className="text-gray-500" />
+                ) : (
+                  <ChevronDown size={16} className="text-gray-500" />
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 )}
               </div>
 
               {/* Dropdown */}
               {dropdownOpen && (
+<<<<<<< HEAD
                 <div className="absolute top-7 left-0 bg-white dark:bg-gray-700 shadow-md rounded-md border border-gray-200 dark:border-gray-600 w-40 text-sm z-10">
                   <div
                     className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer text-gray-700 dark:text-gray-200"
+=======
+                <div className="absolute top-7 left-0 bg-white shadow-md rounded-md border w-40 text-sm z-10">
+                  <div
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                     onClick={() => {
                       setView("week");
                       setDropdownOpen(false);
@@ -84,7 +112,11 @@ export default function Statistics() {
                     Weekly Comparison
                   </div>
                   <div
+<<<<<<< HEAD
                     className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer text-gray-700 dark:text-gray-200"
+=======
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                     onClick={() => {
                       setView("month");
                       setDropdownOpen(false);
@@ -102,6 +134,7 @@ export default function Statistics() {
                 data={chartData}
                 margin={{ top: 10, right: 20, left: 20, bottom: 0 }}
               >
+<<<<<<< HEAD
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#4B5563" />
                 <XAxis
                   dataKey={view === "week" ? "day" : "month"}
@@ -110,11 +143,22 @@ export default function Statistics() {
                 />
                 <YAxis
                   tick={{ fontSize: 12, fill: "currentColor" }}
+=======
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis
+                  dataKey={view === "week" ? "day" : "month"}
+                  tick={{ fontSize: 12 }}
+                  axisLine={false}
+                />
+                <YAxis
+                  tick={{ fontSize: 12 }}
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                   tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                   axisLine={false}
                 />
                 <Tooltip
                   formatter={(value) => `$${value.toLocaleString()}`}
+<<<<<<< HEAD
                   contentStyle={{
                     fontSize: "12px",
                     backgroundColor: "#1f2937",
@@ -124,18 +168,30 @@ export default function Statistics() {
                 <Bar
                   dataKey={view === "week" ? "lastWeek" : "lastYear"}
                   fill="#9ca3af"
+=======
+                  contentStyle={{ fontSize: "12px" }}
+                />
+                <Bar
+                  dataKey={view === "week" ? "lastWeek" : "lastYear"}
+                  fill="#e5e7eb"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                   radius={[6, 6, 0, 0]}
                   barSize={20}
                 />
                 <Bar
                   dataKey={view === "week" ? "thisWeek" : "thisYear"}
+<<<<<<< HEAD
                   fill="#14b8a6"
+=======
+                  fill="#0d9488"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                   radius={[6, 6, 0, 0]}
                   barSize={20}
                 />
               </BarChart>
             </ResponsiveContainer>
           </Card>
+<<<<<<< HEAD
 
           {/* ===== Expenses Breakdown Grid ===== */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
@@ -263,3 +319,123 @@ export default function Statistics() {
     </div>
   );
 }
+=======
+          {/* ===== Expenses Breakdown Grid ===== */}
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+  {[
+    {
+      title: "Housing",
+      amount: 250,
+      change: 15,
+      trend: "up",
+      items: [
+        { label: "House Rent", value: 230, date: "17 May 2023" },
+        { label: "Parking", value: 20, date: "17 May 2023" },
+      ],
+    },
+    {
+      title: "Food",
+      amount: 350,
+      change: 8,
+      trend: "down",
+      items: [
+        { label: "Grocery", value: 230, date: "17 May 2023" },
+        { label: "Restaurant bill", value: 120, date: "17 May 2023" },
+      ],
+    },
+    {
+      title: "Transportation",
+      amount: 50,
+      change: 12,
+      trend: "down",
+      items: [
+        { label: "Taxi Fare", value: 30, date: "17 May 2023" },
+        { label: "Metro Card bill", value: 20, date: "17 May 2023" },
+      ],
+    },
+    {
+      title: "Entertainment",
+      amount: 80,
+      change: 15,
+      trend: "down",
+      items: [
+        { label: "Movie ticket", value: 30, date: "17 May 2023" },
+        { label: "iTunes", value: 50, date: "17 May 2023" },
+      ],
+    },
+    {
+      title: "Shopping",
+      amount: 420,
+      change: 25,
+      trend: "up",
+      items: [
+        { label: "Shirt", value: 230, date: "17 May 2023" },
+        { label: "Jeans", value: 190, date: "17 May 2023" },
+      ],
+    },
+    {
+      title: "Others",
+      amount: 50,
+      change: 23,
+      trend: "up",
+      items: [
+        { label: "Donation", value: 30, date: "17 May 2023" },
+        { label: "Gift", value: 20, date: "17 May 2023" },
+      ],
+    },
+  ].map((cat, idx) => (
+    <Card
+      key={idx}
+      className="p-4 rounded-lg shadow-sm bg-white hover:shadow-md transition"
+    >
+      {/* Header */}
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="text-sm font-medium text-gray-600">{cat.title}</h3>
+        <span
+          className={`text-xs font-semibold ${
+            cat.trend === "up" ? "text-red-500" : "text-green-500"
+          }`}
+        >
+          {cat.change}% {cat.trend === "up" ? "↑" : "↓"}
+        </span>
+      </div>
+
+      {/* Amount */}
+      <p className="text-xl font-bold text-gray-800 mb-1">
+        ${cat.amount.toFixed(2)}
+      </p>
+      <p className="text-xs text-gray-500 mb-3">Compare to last month</p>
+
+      {/* Breakdown items */}
+      <div className="space-y-2">
+        {cat.items.map((item, i) => (
+          <div
+            key={i}
+            className="flex justify-between text-sm text-gray-700 border-t pt-2"
+          >
+            <span>{item.label}</span>
+            <div className="text-right">
+              <p className="font-medium">${item.value.toFixed(2)}</p>
+              <p className="text-xs text-gray-400">{item.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Card>
+  ))}
+</div>
+
+        </div>
+        <div className="flex justify-center mt-6">
+        <button
+          onClick={() => window.history.back()}
+          className="px-4 py-2 bg-teal-600 text-white rounded-lg shadow hover:bg-teal-700 transition"
+        >
+          ⬅ Back
+        </button>
+      </div>
+      </main>
+    </div>
+  );
+}
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4

@@ -1,4 +1,5 @@
 "use client";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -84,3 +85,15 @@ export default function Home() {
     </div>
   );
 } 
+=======
+import { Suspense } from "react";
+import HomeContent from "./HomeContent";
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<p className="text-center mt-20">Loading...</p>}>
+      <HomeContent />
+    </Suspense>
+  );
+}
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4

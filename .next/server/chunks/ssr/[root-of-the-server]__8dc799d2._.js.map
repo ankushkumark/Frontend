@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/lenovo/OneDrive/Desktop/New/Frontend/my-app/src/app/dashboard/page.js"],"sourcesContent":["export default function DashboardPage() {\r\n  return (\r\n    <div className=\"flex items-center justify-center min-h-screen\">\r\n      <h1 className=\"text-3xl font-bold text-emerald-600\">\r\n        Welcome to Dashboard 🚀\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAG,WAAU;sBAAsC;;;;;;;;;;;AAK1D","debugId":null}}]
+}

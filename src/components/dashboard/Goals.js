@@ -15,7 +15,11 @@ export default function Goals() {
   useEffect(() => {
     const fetchGoals = async () => {
       try {
+<<<<<<< HEAD
         const res = await fetch("http://localhost:5000/api/goals", {
+=======
+        const res = await fetch("https://backend-1-bqpk.onrender.com/api/goals", {
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -43,7 +47,11 @@ export default function Goals() {
 
   const handleSave = async ({ target, achieved }) => {
     try {
+<<<<<<< HEAD
       const res = await fetch("http://localhost:5000/api/goals", {
+=======
+      const res = await fetch("https://backend-1-bqpk.onrender.com/api/goals", {
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,6 +81,7 @@ export default function Goals() {
       "
     >
       {/* Heading */}
+<<<<<<< HEAD
       <h2 className="text-22px font-inter text-gray-500 dark:text-gray-300 mb-2">
         Goals
       </h2>
@@ -89,10 +98,23 @@ export default function Goals() {
         <div className="flex justify-between items-center mb-2">
           <div className="flex items-center gap-2">
             <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+=======
+      <h2 className="text-22px font-inter text-gray-500 mb-2">Goals</h2>
+
+<Card className="
+  p-3 sm:p-4 rounded-lg shadow-sm bg-white w-full cursor-pointer 
+  h-[240px] sm:h-[260px] md:h-[280px] lg:h-[245px]
+">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-2">
+          <div className="flex items-center gap-2">
+            <h2 className="text-lg font-semibold">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               ${target.toLocaleString()}
             </h2>
             <Pencil
               size={16}
+<<<<<<< HEAD
               className="text-gray-500 dark:text-gray-400 cursor-pointer hover:text-gray-700 dark:hover:text-gray-200"
               onClick={() => setIsModalOpen(true)}
             />
@@ -103,23 +125,43 @@ export default function Goals() {
         </div>
 
         <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+=======
+              className="text-gray-500 cursor-pointer hover:text-gray-700"
+              onClick={() => setIsModalOpen(true)}
+            />
+          </div>
+          <span className="text-sm text-gray-500">May, 2025</span>
+        </div>
+
+        <div className="border-t border-gray-200 my-2"></div>
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 
         {/* Content */}
         <div className="flex justify-between flex-1">
           <div className="space-y-3 text-sm mt-6">
             <p>
+<<<<<<< HEAD
               <span className="text-gray-500 dark:text-gray-400">
                 Target Achieved{" "}
               </span>
               <span className="font-medium text-gray-800 dark:text-gray-100">
+=======
+              <span className="text-gray-500">Target Achieved </span>
+              <span className="font-medium">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 ${achieved.toLocaleString()}
               </span>
             </p>
             <p>
+<<<<<<< HEAD
               <span className="text-gray-500 dark:text-gray-400">
                 This month Target{" "}
               </span>
               <span className="font-medium text-gray-800 dark:text-gray-100">
+=======
+              <span className="text-gray-500">This month Target </span>
+              <span className="font-medium">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 ${target.toLocaleString()}
               </span>
             </p>
@@ -132,7 +174,10 @@ export default function Goals() {
                 d="M10 50 A40 40 0 0 1 90 50"
                 fill="none"
                 stroke="#e5e7eb"
+<<<<<<< HEAD
                 className="dark:stroke-gray-700"
+=======
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 strokeWidth="8"
               />
               <path
@@ -151,6 +196,7 @@ export default function Goals() {
 
             <div className="absolute left-1/2 bottom-0 w-3 h-3 bg-[#0d9488] rounded-full transform -translate-x-1/2"></div>
 
+<<<<<<< HEAD
             <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 text-sm font-semibold text-gray-800 dark:text-gray-100">
               ${achieved.toLocaleString()}
             </div>
@@ -159,12 +205,26 @@ export default function Goals() {
               $0
             </div>
             <div className="absolute right-0 bottom-0 text-xs text-gray-400 dark:text-gray-500">
+=======
+            <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 text-sm font-semibold text-gray-800">
+              ${achieved.toLocaleString()}
+            </div>
+
+            <div className="absolute left-0 bottom-0 text-xs text-gray-400">
+              $0
+            </div>
+            <div className="absolute right-0 bottom-0 text-xs text-gray-400">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               ${target.toLocaleString()}
             </div>
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className="text-center text-xs font-inter text-gray-500 dark:text-gray-400 mt-10">
+=======
+        <div className="text-center text-xs font-inter text-gray-500 mt-10">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
           Target vs Achievement
         </div>
       </Card>

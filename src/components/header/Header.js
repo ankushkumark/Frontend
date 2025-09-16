@@ -4,7 +4,19 @@ import { toggleSidebar } from "@/store/slices/uiSlice";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
+<<<<<<< HEAD
 import { Menu, Bell, Search, Sun, Moon, Download, X } from "lucide-react";
+=======
+import {
+  Menu,
+  Bell,
+  Search,
+  Sun,
+  Moon,
+  Download,
+  X,
+} from "lucide-react";
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 import { useEffect, useState } from "react";
 
 export default function Header() {
@@ -12,11 +24,19 @@ export default function Header() {
   const { sidebarOpen } = useSelector((s) => s.ui);
 
   const [user, setUser] = useState(null);
+<<<<<<< HEAD
   // const [darkMode, setDarkMode] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [recentBills, setRecentBills] = useState([]);
 
   // ✅ Load user info
+=======
+  const [darkMode, setDarkMode] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [recentBills, setRecentBills] = useState([]);
+
+  //  User info load
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
   useEffect(() => {
     const token = localStorage.getItem("token");
     const name = localStorage.getItem("name");
@@ -27,7 +47,11 @@ export default function Header() {
     } else if (token) {
       const fetchUser = async () => {
         try {
+<<<<<<< HEAD
           const res = await fetch("http://localhost:5000/api/auth/me", {
+=======
+          const res = await fetch("https://backend-1-bqpk.onrender.com/api/auth/me", {
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             headers: { Authorization: `Bearer ${token}` },
           });
           if (res.ok) {
@@ -44,12 +68,20 @@ export default function Header() {
     }
   }, []);
 
+<<<<<<< HEAD
   // ✅ Fetch recent bills
+=======
+  //  Fetch recent bills (only 2 latest)
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
 
+<<<<<<< HEAD
     fetch(`http://localhost:5000/api/bills/user/${userId}`)
+=======
+    fetch(`https://backend-1-bqpk.onrender.com/api/bills/user/${userId}`)
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
       .then((res) => res.json())
       .then((data) => {
         const sorted = data
@@ -60,6 +92,7 @@ export default function Header() {
       .catch((err) => console.error("Error fetching bills:", err));
   }, []);
 
+<<<<<<< HEAD
   // ✅ Load dark mode from localStorage before first render
 // ✅ State initialise karte hi localStorage ya system se dark mode set karo
 const [darkMode, setDarkMode] = useState(() => {
@@ -79,12 +112,25 @@ useEffect(() => {
     document.documentElement.classList.remove("dark");
   }
 }, [darkMode]);
+=======
+  // Dark mode toggle
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+  if (sidebarOpen) return null;
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 
   const today = new Date();
   const options = { day: "2-digit", month: "short", year: "numeric" };
   const formattedDate = today.toLocaleDateString("en-US", options);
 
   const downloadData = async () => {
+<<<<<<< HEAD
     try {
       const userId = localStorage.getItem("userId");
       if (!userId) {
@@ -125,6 +171,40 @@ useEffect(() => {
         sidebarOpen ? "lg:ml-64" : "ml-0"
       }`}
     >
+=======
+  try {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      alert("User not logged in!");
+      return;
+    }
+
+    //  Transactions fetch 
+    const res = await fetch(`https://backend-1-bqpk.onrender.com/api/recent-transactions/${userId}`);
+    const data = await res.json();
+
+    if (!data || data.length === 0) {
+      alert("No transactions found!");
+      return;
+    }
+
+    //  Excel sheet
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Transactions");
+
+    //  File save
+    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(blob, "transactions.xlsx");
+  } catch (err) {
+    console.error("Error downloading transactions:", err);
+  }
+};
+
+  return (
+    <header className="bg-gray-100 dark:bg-gray-900 border-b border-gray-300 sticky top-0 z-40">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
         {/* Left: Hamburger + User */}
         <div className="flex items-center gap-3 w-full sm:w-auto">

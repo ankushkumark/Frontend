@@ -24,7 +24,11 @@ export default function AccountsPage() {
       }
 
       const res = await fetch(
+<<<<<<< HEAD
         `http://localhost:5000/api/accounts/user/${userId}`
+=======
+        `https://backend-1-bqpk.onrender.com/api/accounts/user/${userId}`
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
       );
       if (!res.ok) {
         console.error("Fetch accounts failed:", await res.text());
@@ -46,7 +50,11 @@ export default function AccountsPage() {
     }
 
     try {
+<<<<<<< HEAD
       const res = await fetch("http://localhost:5000/api/accounts", {
+=======
+      const res = await fetch("https://backend-1-bqpk.onrender.com/api/accounts", {
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...newAcc, userId }),

@@ -20,7 +20,11 @@ const [userId, setUserId] = useState(null);
 
     const fetchData = async () => {
       try {
+<<<<<<< HEAD
         const res = await fetch(`http://localhost:5000/api/expenses/${userEmail}`);
+=======
+        const res = await fetch(`https://backend-1-bqpk.onrender.com/api/expenses/${userEmail}`);
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         if (!res.ok) throw new Error("Failed to fetch expenses");
         const data = await res.json();
         setExpenses(data);
@@ -43,7 +47,11 @@ const [userId, setUserId] = useState(null);
     const email = localStorage.getItem("userEmail"); 
 
     const res = await fetch(
+<<<<<<< HEAD
       `http://localhost:5000/api/expenses/${userId}/${title}`,
+=======
+      `https://backend-1-bqpk.onrender.com/api/expenses/${userId}/${title}`,
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

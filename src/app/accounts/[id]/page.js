@@ -13,7 +13,11 @@ export default function AccountDetailsPage() {
   useEffect(() => {
     const fetchAccount = async () => {
       try {
+<<<<<<< HEAD
         const res = await fetch(`http://localhost:5000/api/accounts/${id}`);
+=======
+        const res = await fetch(`https://backend-1-bqpk.onrender.com/api/accounts/${id}`);
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         if (!res.ok) throw new Error("Failed to fetch account");
         const data = await res.json();
         setAccount(data);
@@ -26,6 +30,7 @@ export default function AccountDetailsPage() {
 
   // ✅ Handle balance update with transaction
   const handleSaveBalance = async () => {
+<<<<<<< HEAD
     try {
       const res = await fetch(`http://localhost:5000/api/accounts/${id}`, {
         method: "PUT",
@@ -47,6 +52,29 @@ export default function AccountDetailsPage() {
   };
 
   if (!account) return <p className="text-center mt-10 dark:text-gray-300">Loading...</p>;
+=======
+  try {
+    const res = await fetch(`https://backend-1-bqpk.onrender.com/api/accounts/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ balance: Number(newBalance) }), // 👈 string → number
+    });
+
+    if (res.ok) {
+      const updated = await res.json();
+      setAccount(updated);
+      setIsEditing(false);
+      setNewBalance("");
+    } else {
+      console.error("Update failed:", await res.text());
+    }
+  } catch (error) {
+    console.error("Failed to update balance:", error);
+  }
+};
+
+  if (!account) return <p className="text-center mt-10">Loading...</p>;
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 
   return (
     <div className="p-4 sm:p-6 max-w-3xl mx-auto">
@@ -62,7 +90,11 @@ export default function AccountDetailsPage() {
 
         <button
           onClick={() => setIsEditing(true)}
+<<<<<<< HEAD
           className="absolute top-4 right-4 bg-white text-teal-700 px-3 py-1 rounded-md text-sm font-medium shadow hover:bg-gray-100"
+=======
+          className="absolute top-4 right-4 bg-white text-teal-700 px-3 py-1 rounded-md text-sm font-medium shadow"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         >
           Edit Details
         </button>
@@ -70,20 +102,34 @@ export default function AccountDetailsPage() {
 
       {/* Edit Popup */}
       {isEditing && (
+<<<<<<< HEAD
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-80 shadow-lg">
             <h3 className="text-lg font-bold mb-3 dark:text-gray-200">Update Balance</h3>
+=======
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-80 shadow-lg">
+            <h3 className="text-lg font-bold mb-3">Update Balance</h3>
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             <input
               type="number"
               value={newBalance}
               onChange={(e) => setNewBalance(e.target.value)}
               placeholder="Enter new balance"
+<<<<<<< HEAD
               className="border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 p-2 w-full rounded-md outline-none focus:ring-2 focus:ring-teal-500"
+=======
+              className="border border-gray-300 p-2 w-full rounded-md"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             />
             <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setIsEditing(false)}
+<<<<<<< HEAD
                 className="px-4 py-2 bg-gray-400 hover:bg-gray-500 text-white rounded-md"
+=======
+                className="px-4 py-2 bg-gray-400 text-white rounded-md"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               >
                 Cancel
               </button>
@@ -99,6 +145,7 @@ export default function AccountDetailsPage() {
       )}
 
       {/* Transactions */}
+<<<<<<< HEAD
       <div className="bg-white dark:bg-gray-900 dark:text-gray-200 shadow rounded-xl p-5 mt-6">
         <h3 className="text-lg font-semibold mb-3">All Transactions</h3>
         {account.transactions?.length > 0 ? (
@@ -139,6 +186,47 @@ export default function AccountDetailsPage() {
           <p className="text-gray-500 dark:text-gray-400 text-sm">No transactions yet.</p>
         )}
       </div>
+=======
+<div className="bg-white shadow rounded-xl p-5 mt-6">
+  <h3 className="text-lg font-semibold mb-3">All Transactions</h3>
+  {account.transactions?.length > 0 ? (
+    <table className="w-full text-sm">
+      <thead>
+        <tr className="text-left border-b">
+          <th className="p-2">Amount</th>
+          <th className="p-2">Type / Status</th>
+          <th className="p-2">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[...account.transactions]
+          .reverse() // 👈 latest transaction upper side
+          .map((tx, i) => (
+            <tr key={i} className="border-b hover:bg-gray-50">
+              <td className="p-2">₹{tx.amount}</td>
+              <td className="p-2">
+                <span
+                  className={`${
+                    tx.type === "Credit" ? "text-green-600" : "text-red-600"
+                  } font-medium`}
+                >
+                  {tx.type}
+                </span>
+                <br />
+                <span className="text-xs text-gray-500">{tx.status}</span>
+              </td>
+              <td className="p-2">
+                {new Date(tx.date).toLocaleDateString()}
+              </td>
+            </tr>
+          ))}
+      </tbody>
+    </table>
+  ) : (
+    <p className="text-gray-500 text-sm">No transactions yet.</p>
+  )}
+</div>
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 
       {/* Back Button */}
       <button

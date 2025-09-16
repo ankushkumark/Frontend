@@ -67,7 +67,11 @@ const avatar = localStorage.getItem("avatar");
       // fallback: backend call
       const fetchUser = async () => {
         try {
+<<<<<<< HEAD
           const res = await fetch("http://localhost:5000/api/auth/me", {
+=======
+          const res = await fetch("https://backend-1-bqpk.onrender.com/api/auth/me", {
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             headers: { Authorization: `Bearer ${token}` },
           });
           if (res.ok) {
@@ -183,7 +187,11 @@ const avatar = localStorage.getItem("avatar");
   user?.avatar?.startsWith("http")
     ? user.avatar
     : user?.avatar
+<<<<<<< HEAD
     ? `http://localhost:5000/${user.avatar}`
+=======
+    ? `https://backend-1-bqpk.onrender.com/${user.avatar}`
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
     : `https://api.dicebear.com/7.x/initials/svg?seed=${user?.name || "User"}`
 }
     alt={user?.name || "User"}

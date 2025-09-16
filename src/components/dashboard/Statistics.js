@@ -20,6 +20,7 @@ export default function Statistics({ refresh }) {
     typeof window !== "undefined" ? localStorage.getItem("userId") : null;
 
   // 🔹 Fetch stats from backend
+<<<<<<< HEAD
   useEffect(() => {
     async function fetchStats() {
       try {
@@ -42,13 +43,40 @@ export default function Statistics({ refresh }) {
       return () => clearInterval(interval); // cleanup
     }
   }, [view, userId]);
+=======
+useEffect(() => {
+  async function fetchStats() {
+    try {
+      const endpoint = view === "week" ? "weekly" : "monthly";
+      const res = await fetch(`https://backend-1-bqpk.onrender.com/api/stats/${endpoint}/${userId}`);
+      if (!res.ok) throw new Error("Failed to fetch stats");
+      const stats = await res.json();
+      setData(stats);
+    } catch (err) {
+      console.error("Error fetching stats:", err);
+    }
+  }
+
+  if (userId) {
+    fetchStats();
+
+    const interval = setInterval(fetchStats, 1000); 
+    return () => clearInterval(interval); // cleanup
+  }
+}, [view, userId]);
+
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 
   return (
     <div className="w-full">
       <Card
         className="
+<<<<<<< HEAD
           p-5 rounded-lg shadow-sm 
           bg-white dark:bg-gray-900 
+=======
+          p-5 rounded-lg shadow-sm bg-white 
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
           w-full h-[250px] mt-4
           lg:max-w-[680px] lg:h-[253px] 
           lg:ml-auto lg:mr-[-0px] lg:mt-[-525px]
@@ -57,33 +85,55 @@ export default function Statistics({ refresh }) {
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           {/* ✅ Heading */}
+<<<<<<< HEAD
           <h2 className="text-sm sm:text-base lg:text-lg font-inter text-gray-600 dark:text-gray-300">
+=======
+          <h2 className="text-sm sm:text-base lg:text-lg font-inter text-gray-600">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             Statistics
           </h2>
 
           {/* ✅ Buttons */}
           <div className="flex flex-wrap gap-2 justify-end">
             <Button
+<<<<<<< HEAD
               onClick={() => setView("week")}
+=======
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               variant={view === "week" ? "default" : "outline"}
               size="sm"
               className={`text-xs px-2 py-1 ${
                 view === "week"
                   ? "bg-[#0d9488] text-white"
+<<<<<<< HEAD
                   : "border-green-600 text-green-600 dark:border-green-400 dark:text-green-400"
               }`}
+=======
+                  : "border-green-600 text-green-600"
+              }`}
+              
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             >
               This Week
             </Button>
             <Button
+<<<<<<< HEAD
               onClick={() => setView("month")}
+=======
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               variant={view === "month" ? "default" : "outline"}
               size="sm"
               className={`text-xs px-2 py-1 ${
                 view === "month"
                   ? "bg-[#0d9488] text-white"
+<<<<<<< HEAD
                   : "border-green-600 text-green-600 dark:border-green-400 dark:text-green-400"
               }`}
+=======
+                  : "border-green-600 text-green-600"
+              }`}
+              
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             >
               Last Month
             </Button>
@@ -96,6 +146,7 @@ export default function Statistics({ refresh }) {
             data={data}
             margin={{ top: 0, right: 20, left: 40, bottom: 0 }}
           >
+<<<<<<< HEAD
             <CartesianGrid
               strokeDasharray="3 3"
               vertical={false}
@@ -108,11 +159,18 @@ export default function Statistics({ refresh }) {
             />
             <YAxis
               tick={{ fontSize: 12, fill: "currentColor" }}
+=======
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="day" tick={{ fontSize: 12 }} axisLine={false} />
+            <YAxis
+              tick={{ fontSize: 12 }}
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               axisLine={false}
             />
             <Tooltip
               formatter={(value) => `$${value.toLocaleString()}`}
+<<<<<<< HEAD
               contentStyle={{
                 fontSize: "12px",
                 backgroundColor: "var(--tw-bg-opacity, #fff)",
@@ -124,6 +182,13 @@ export default function Statistics({ refresh }) {
               dataKey="lastWeek"
               fill="#e5e7eb" // light gray
               className="dark:fill-gray-700"
+=======
+              contentStyle={{ fontSize: "12px" }}
+            />
+            <Bar
+              dataKey="lastWeek"
+              fill="#e5e7ed"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               radius={[6, 6, 0, 0]}
               barSize={15}
             />

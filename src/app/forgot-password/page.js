@@ -17,7 +17,11 @@ export default function ForgotPasswordPage() {
 
     try {
       setLoading(true);
+<<<<<<< HEAD
       const res = await fetch("http://localhost:5000/api/auth/forgot-password", {
+=======
+      const res = await fetch("https://backend-1-bqpk.onrender.com/api/auth/forgot-password", {
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

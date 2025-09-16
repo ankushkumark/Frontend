@@ -21,10 +21,18 @@ import {
   Grid as GridIcon,
   ArrowUp,
   ArrowDown,
+<<<<<<< HEAD
   Pencil,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+=======
+  Pencil, // Pencil icon add
+} from "lucide-react";
+import { useEffect, useState } from "react";
+
+// ✅ Chart data
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 const data = [
   { date: "May 01", thisMonth: 4000, lastMonth: 2400 },
   { date: "May 05", thisMonth: 3200, lastMonth: 2800 },
@@ -35,6 +43,10 @@ const data = [
   { date: "May 30", thisMonth: 4200, lastMonth: 2600 },
 ];
 
+<<<<<<< HEAD
+=======
+// Static expense categories
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 const staticExpenses = [
   { id: 1, title: "Housing", amount: 0, percent: 15, isUp: true, icon: Home },
   { id: 2, title: "Food", amount: 0, percent: 8, isUp: false, icon: Utensils },
@@ -50,8 +62,13 @@ export default function SavingSummary() {
   const [newAmount, setNewAmount] = useState("");
   const [userId, setUserId] = useState(null);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+<<<<<<< HEAD
   const router = useRouter();
 
+=======
+const router = useRouter();
+  // Fetch user expenses from DB
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
   useEffect(() => {
     const id = localStorage.getItem("userId");
     if (!id) return;
@@ -59,7 +76,11 @@ export default function SavingSummary() {
 
     const fetchData = async () => {
       try {
+<<<<<<< HEAD
         const res = await fetch(`http://localhost:5000/api/expenses/${id}`);
+=======
+        const res = await fetch(`https://backend-1-bqpk.onrender.com/api/expenses/${id}`);
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         if (!res.ok) throw new Error("Failed to fetch expenses");
         const data = await res.json();
         setExpenses(data);
@@ -71,6 +92,10 @@ export default function SavingSummary() {
     fetchData();
   }, []);
 
+<<<<<<< HEAD
+=======
+  // Match DB data with static categories
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
   const getExpenseData = (item) => {
     const found = expenses.find((e) => e.key === item.title);
     return {
@@ -80,12 +105,20 @@ export default function SavingSummary() {
     };
   };
 
+<<<<<<< HEAD
+=======
+  //  Save updated expense
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
   const handleSave = async () => {
     if (!userId || !selectedItem || !newAmount) return;
 
     try {
       const res = await fetch(
+<<<<<<< HEAD
         `http://localhost:5000/api/expenses/${userId}/${selectedItem.title}`,
+=======
+        `https://backend-1-bqpk.onrender.com/api/expenses/${userId}/${selectedItem.title}`,
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -113,15 +146,26 @@ export default function SavingSummary() {
 
   return (
     <div className="p-4 md:p-5 flex flex-col gap-6">
+<<<<<<< HEAD
       {/* Top Row */}
       <div className="flex flex-col lg:flex-row gap-4 w-full">
         {/* Goals Card */}
         <div className="bg-white dark:bg-gray-800 dark:text-gray-100 rounded-2xl shadow-md p-4 w-full lg:w-72">
+=======
+      {/* Top Row: Goals + Saving Summary Chart */}
+      <div className="flex flex-col lg:flex-row gap-4 w-full">
+        {/* Goals Card */}
+        <div className="bg-white rounded-2xl shadow-md p-4 w-full lg:w-72">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
           <Goals />
         </div>
 
         {/* Chart Card */}
+<<<<<<< HEAD
         <div className="bg-white dark:bg-gray-800 dark:text-gray-100 rounded-2xl shadow-md p-4 w-full flex-1 h-80">
+=======
+        <div className="bg-white rounded-2xl shadow-md p-4 w-full flex-1 h-80">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
           <div className="flex items-center justify-between flex-wrap gap-2">
             <h2 className="font-inter sm:text-lg">Saving Summary</h2>
           </div>
@@ -132,14 +176,26 @@ export default function SavingSummary() {
                 <span className="inline-block w-3 sm:w-4 h-1.5 rounded bg-teal-600" />
                 This month
               </span>
+<<<<<<< HEAD
               <span className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                 <span className="inline-block w-3 sm:w-4 h-1.5 rounded bg-gray-300 dark:bg-gray-600" />
+=======
+              <span className="flex items-center gap-2 text-gray-500">
+                <span className="inline-block w-3 sm:w-4 h-1.5 rounded bg-gray-300" />
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 Last month
               </span>
             </div>
 
             <ResponsiveContainer width="100%" height="100%">
+<<<<<<< HEAD
               <ComposedChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
+=======
+              <ComposedChart
+                data={data}
+                margin={{ top: 20, right: 20, left: 0, bottom: 0 }}
+              >
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 <defs>
                   <linearGradient id="tealFill" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#0f766e" stopOpacity="0.6" />
@@ -152,7 +208,10 @@ export default function SavingSummary() {
                   stroke="#e5e7eb"
                   strokeDasharray="3 3"
                   vertical={false}
+<<<<<<< HEAD
                   className="dark:stroke-gray-700"
+=======
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 />
                 <XAxis dataKey="date" tickLine={false} axisLine={false} fontSize={10} />
                 <YAxis
@@ -169,10 +228,15 @@ export default function SavingSummary() {
                   contentStyle={{
                     borderRadius: 10,
                     border: "none",
+<<<<<<< HEAD
                     backgroundColor: "var(--tooltip-bg, white)",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                   }}
                   labelStyle={{ color: "black" }}
+=======
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                  }}
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 />
                 <Area
                   type="monotone"
@@ -196,8 +260,13 @@ export default function SavingSummary() {
         </div>
       </div>
 
+<<<<<<< HEAD
       {/* Expenses Breakdown */}
       <div className="bg-white dark:bg-gray-800 dark:text-gray-100 rounded-2xl shadow-md p-4 w-full">
+=======
+      {/*  Expenses Breakdown Section */}
+      <div className="bg-white rounded-2xl shadow-md p-4 w-full">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         <h2 className="font-inter sm:text-lg mb-3">Expenses Breakdown</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {staticExpenses.map((item) => {
@@ -206,23 +275,42 @@ export default function SavingSummary() {
             return (
               <div
                 key={item.id}
+<<<<<<< HEAD
                 className="relative bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-lg p-2 sm:p-4"
               >
                 {/* Adjust Button */}
                 <button
                   onClick={() => setSelectedItem(item)}
                   className="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 border border-teal-600 rounded-lg bg-white dark:bg-gray-800 dark:text-gray-100 text-xs font-inter hover:bg-teal-50 dark:hover:bg-gray-600"
+=======
+                className="relative bg-white border rounded-lg p-2 sm:p-4"
+              >
+                {/*  Adjust Button (top-right) */}
+                <button
+                  onClick={() => setSelectedItem(item)}
+                  className="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 border border-teal-600 rounded-lg bg-white text-black text-xs font-inter hover:bg-teal-50"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 >
                   <Pencil className="w-3 h-3" />
                   Adjust
                 </button>
 
+<<<<<<< HEAD
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gray-100 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+=======
+                {/* Left */}
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                       {item.title}
                     </p>
                     <p className="text-sm sm:text-lg font-semibold whitespace-nowrap">
@@ -231,6 +319,10 @@ export default function SavingSummary() {
                   </div>
                 </div>
 
+<<<<<<< HEAD
+=======
+                {/* Right */}
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 <div className="flex flex-col items-end">
                   <p
                     className={`flex items-center text-xs sm:text-sm font-medium ${
@@ -244,7 +336,11 @@ export default function SavingSummary() {
                       <ArrowDown className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                     )}
                   </p>
+<<<<<<< HEAD
                   <span className="text-gray-400 dark:text-gray-500 text-sm sm:text-base leading-none">→</span>
+=======
+                  <span className="text-gray-400 text-sm sm:text-base leading-none">→</span>
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
                 </div>
               </div>
             );
@@ -252,6 +348,7 @@ export default function SavingSummary() {
         </div>
       </div>
 
+<<<<<<< HEAD
       {/* Popup Modal */}
       {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
@@ -260,6 +357,16 @@ export default function SavingSummary() {
               Update Amount - {selectedItem.title}
             </h3>
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+=======
+      {/* 🔹 Popup Modal */}
+      {selectedItem && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white rounded-2xl p-6 w-80 shadow-lg">
+            <h3 className="text-lg font-semibold mb-4">
+              Update Amount - {selectedItem.title}
+            </h3>
+            <p className="mb-2 text-sm text-gray-500">
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               Current: ${getExpenseData(selectedItem).amount}
             </p>
             <input
@@ -267,22 +374,35 @@ export default function SavingSummary() {
               value={newAmount}
               onChange={(e) => setNewAmount(e.target.value)}
               placeholder="Enter new amount"
+<<<<<<< HEAD
               className="w-full border rounded-lg px-3 py-2 mb-4 dark:bg-gray-700 dark:border-gray-600"
+=======
+              className="w-full border rounded-lg px-3 py-2 mb-4"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
             />
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setSelectedItem(null)}
+<<<<<<< HEAD
                 className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-600 dark:text-gray-100"
+=======
+                className="px-4 py-2 rounded-lg bg-gray-200"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               >
                 Cancel
               </button>
               <button
                 onClick={handleSave}
+<<<<<<< HEAD
                 className="px-4 py-2 rounded-lg bg-teal-600 text-white hover:bg-teal-700"
+=======
+                className="px-4 py-2 rounded-lg bg-teal-600 text-white"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
               >
                 Save
               </button>
             </div>
+<<<<<<< HEAD
           </div>
         </div>
       )}
@@ -292,10 +412,27 @@ export default function SavingSummary() {
         <button
           onClick={() => router.back()}
           className="px-6 py-2 rounded-xl bg-teal-600 text-white hover:bg-teal-700"
+=======
+            
+          </div>
+          
+        </div>
+      )}
+      <div className="flex justify-center mt-6">
+        <button
+          onClick={() => router.back()}
+          className="px-6 py-2 rounded-xl bg-teal-600 text-white hover:bg-gray-700"
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         >
           ← Back
         </button>
       </div>
+<<<<<<< HEAD
     </div>
+=======
+      
+    </div>
+    
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
   );
 }

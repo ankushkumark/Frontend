@@ -23,7 +23,11 @@ export default function TotalBalance() {
       }
 
       try {
+<<<<<<< HEAD
         const res = await fetch(`http://localhost:5000/api/accounts/user/${userId}`);
+=======
+        const res = await fetch(`https://backend-1-bqpk.onrender.com/api/accounts/user/${userId}`);
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
         if (!res.ok) {
           console.error("Failed to fetch accounts:", await res.text());
           return;
@@ -64,6 +68,7 @@ export default function TotalBalance() {
   if (accounts.length === 0) return null; // safeguard
 
   return (
+<<<<<<< HEAD
     <div
       className="
         w-full 
@@ -143,4 +148,84 @@ export default function TotalBalance() {
       </Card>
     </div>
   );
+=======
+  <div
+    className="
+      w-full 
+      sm:max-w-[360px] md:max-w-[380px] lg:max-w-[335px]
+      ml-0
+    "
+  >
+    {/* Heading */}
+    <h2 className="text-22px font-inter text-gray-500 mb-2">
+      Total Balance
+    </h2>
+
+    <Card
+      className="p-2 sm:p-3 rounded-lg bg-white shadow-sm w-full cursor-pointer"
+      onClick={() => router.push("/accounts")}
+    >
+      {/* Total Balance Amount */}
+      <p className="text-lg font-bold text-gray-900 mb-2">
+        {accounts[index].balance}
+      </p>
+      <CardContent className="p-0">
+        {/* Active Account */}
+        <div
+          className={`rounded-md p-3 text-white transition-all ${
+            accounts[index].color || "bg-gray-500"
+          }`}
+        >
+          <p className="text-[10px]">Account Type</p>
+          <h3 className="text-sm font-semibold">{accounts[index].type}</h3>
+          <p className="text-[10px] mt-0.5">{accounts[index].number}</p>
+          <div className="mt-2 flex items-center justify-between">
+            <span className="text-base font-bold">
+              {accounts[index].balance}
+            </span>
+            <span className="text-sm">💳</span>
+          </div>
+        </div>
+      </CardContent>
+
+      {/* Controls + Dots */}
+      <div className="mt-2 flex items-center justify-between">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            prev();
+          }}
+          className="flex items-center gap-1 text-xs text-gray-600 hover:text-gray-900"
+        >
+          <ChevronLeft className="w-3 h-3" />
+          Prev
+        </button>
+
+        <div className="flex gap-1">
+          {accounts.map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 w-1.5 rounded-full ${
+                i === index ? "bg-gray-800" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            next();
+          }}
+          className="flex items-center gap-1 text-xs text-gray-600 hover:text-gray-900"
+        >
+          Next
+          <ChevronRight className="w-3 h-3" />
+        </button>
+      </div>
+    </Card>
+  </div>
+);
+
+>>>>>>> 1760b9530f8e3987ce454485b5298e7c470876e4
 }
